@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% if error %}
+    <div class="alert alert-danger">{{ error }}</div>
+  {% endif %}
+  <form method="POST" action="{{ url_for('analyze') }}" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="resume" class="form-label">Upload Resume (TXT)</label>
+      <input type="file" class="form-control" name="resume" required>
+    </div>
+    <div class="mb-3">
+      <label for="job_description" class="form-label">Paste Job Description</label>
+      <textarea class="form-control" name="job_description" rows="6" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Analyze</button>
+  </form>
+{% endblock %}

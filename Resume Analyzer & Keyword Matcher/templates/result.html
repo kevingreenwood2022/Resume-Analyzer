@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="mb-4">
+    <h2>Match Score: {{ result.score }}%</h2>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <h5>Matched Keywords</h5>
+      <ul class="list-group">
+        {% for word in result.matched %}
+          <li class="list-group-item">{{ word }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <h5>Missing Keywords</h5>
+      <ul class="list-group">
+        {% for word in result.missing %}
+          <li class="list-group-item text-danger">{{ word }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <a href="{{ url_for('index') }}" class="btn btn-secondary mt-4">Try Another</a>
+{% endblock %}
